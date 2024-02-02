@@ -70,7 +70,7 @@ struct SearchView: View {
                         case .loading:
                             ProgressView()
                         case .success(let results):
-                            Text("Results for \(inputSearch)")
+                            Text("Results for '\(inputSearch)'")
                                 .font(.title)
 
                             ForEach(results, id: \.self.id) { result in
