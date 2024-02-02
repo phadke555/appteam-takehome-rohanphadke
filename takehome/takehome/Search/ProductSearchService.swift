@@ -16,8 +16,13 @@ struct ProductSearchService {
     }
 
     public static func findProducts(
+        query: String
     ) async throws -> [Product] {
-        var components = URLComponents(string: "https://dummyjson.com/products")!
+        var components = URLComponents(string: "https://dummyjson.com/products/search")!
+        let queryItems: [URLQueryItem] = [
+            URLQueryItem(name: "q", value: "\(query)")
+            ]
+        components.queryItems = queryItems
         guard let url = components.url else {
             fatalError("Invalid URL Error")
         }

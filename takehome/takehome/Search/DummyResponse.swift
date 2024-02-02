@@ -8,6 +8,8 @@
 import Foundation
 
 
+
+
 struct DummyResponse: Codable {
     let products: [Product]
 }
