@@ -14,16 +14,17 @@ struct SearchView: View {
     @StateObject private var vm = SearchViewModel()
     var body: some View {
         NavigationStack {
-            ZStack(alignment: .top) {
-//                Rectangle
-                Rectangle()
-                    .foregroundColor(Color.testColorSet)
-                    .frame(height: 210) // Adjust the height as necessary
-                    .edgesIgnoringSafeArea(.all)
+//            ZStack(alignment: .top) {
+////                Rectangle
+//                Rectangle()
+//                    .foregroundColor(Color.testColorSet)
+//                    .frame(height: 210) // Adjust the height as necessary
+//                    .edgesIgnoringSafeArea(.all)
 
-                List {
-                    Section {
-                        HStack(spacing: 0) {
+                
+                    VStack {
+                        HStack() {
+                            Spacer()
 //                            Image(systemName: "magnifyingglass")
                             TextField("Search", text: $inputSearch)
                                 .font(.title3)
@@ -62,18 +63,26 @@ struct SearchView: View {
                                 Text("$\(vm.totalCost, specifier: "%.2f")")
                                     .font(.subheadline)
                             }
+                            Spacer()
                         }
                         HStack {
-                            Text("How do you want your items?")
+                            Image(systemName: "iphone.gen3.circle")
+                            Text("How do you want your items? | ")
                             TextField("Zip", text: $zip)
                                 .frame(width: 45, height: 20)
+                            Spacer()
                         }
+                        .padding()
                     }
-//                    .badge(100)
-                    .listRowBackground(Color.testColorSet)
-                    .listRowInsets(EdgeInsets())
                     .background(Color.testColorSet)
                     .foregroundColor(.white)
+//                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+//                    .badge(100)
+//                    .listRowBackground(Color.testColorSet)
+//                    .listRowInsets(EdgeInsets())
+//                    .background(Color.testColorSet)
+//                    .foregroundColor(.white)
+            List {
 
                     Section {
                         switch vm.state {
@@ -147,7 +156,7 @@ struct SearchView: View {
                 }
                 .scrollContentBackground(.hidden)
 //                .background(Color.testColorSet.edgesIgnoringSafeArea(.all))
-            }
+//            }
         }
     }
 }

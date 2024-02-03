@@ -12,15 +12,25 @@ struct CartView: View {
     let cost: Double
     let count: Int
     var body: some View {
-        List {
-            Section {
-                Text("Cart")
-                    .font(.title)
-                    .multilineTextAlignment(.center)
-                Text("Total: $\(cost, specifier: "%.2f")")
-                Text("Items: \(count)")
+        VStack {
+            HStack {
+                Spacer()
+                VStack {
+                    Text("Your Cart")
+                        .font(.title)
+                        .multilineTextAlignment(.center)
+                    Text("Total: $\(cost, specifier: "%.2f")")
+                    Text("Items: \(count)")
+                    
+                }
+                Spacer()
             }
-
+            .padding()
+        }
+        .background(Color.testColorSet)
+        .foregroundColor(.white)
+        
+        List {
             if cost > 0.00 || count > 0 {
                 Section {
                     ForEach(cart, id: \.self.id) { result in
@@ -66,7 +76,9 @@ struct CartView: View {
                 }
             }
             else {
-                Text("Cart is currently empty. Add to the cart!")
+                Section {
+                    Text("Cart is currently empty. Add to the cart!")
+                }
             }
         }
         .scrollContentBackground(.hidden)

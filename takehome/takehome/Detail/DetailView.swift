@@ -19,20 +19,25 @@ struct DetailView: View {
     var body: some View {
         NavigationStack {
             //        Text("Recipe details for \(recipeID)")
+
+            VStack {
+                HStack {
+                    Spacer()
+                    Text(productName)
+                        .font(.title)
+                        .padding()
+                    StarRatingView(rating: productRating)
+                        .font(.title2)
+                    Spacer()
+                }
+                .padding()
+            }
+            .background(Color.testColorSet)
+            .foregroundColor(.white)
             List {
                 Section {
-                    HStack {
-                        Spacer()
-                        Text(productName)
-                            .font(.title)
-                            .padding()
-                        StarRatingView(rating: productRating)
-                            .font(.title2)
-                        Spacer()
-                    }
                     AsyncImage(url: URL(string: productImage))
                     VStack(alignment: .center) {
-                        
                         HStack(alignment: .center) {
                             Spacer()
                             VStack {
