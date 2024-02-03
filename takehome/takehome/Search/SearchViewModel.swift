@@ -17,6 +17,7 @@ import Foundation
 class SearchViewModel: ObservableObject {
     @Published var cart: [Product] = []
     @Published var totalCost: Double = 0.0
+    @Published var cartCount: Int = 0
     @Published var query: String = ""
     @Published var state: SearchLoadingState = .idle
 
@@ -35,6 +36,10 @@ class SearchViewModel: ObservableObject {
 
     func addToTotalCost(price: Double) {
         self.totalCost += price
+    }
+    
+    func addToCartCount(count: Int) {
+        self.cartCount += 1
     }
     
     func appendToCart(product: Product){

@@ -18,7 +18,7 @@ struct SearchView: View {
 //                Rectangle
                 Rectangle()
                     .foregroundColor(Color.testColorSet)
-                    .frame(height: 200) // Adjust the height as necessary
+                    .frame(height: 210) // Adjust the height as necessary
                     .edgesIgnoringSafeArea(.all)
 
                 List {
@@ -33,9 +33,9 @@ struct SearchView: View {
                                     .foregroundColor(.blue)
                                 )
                                 .background(
-                                        RoundedRectangle(cornerRadius: 10) // Adjust the corner radius as needed
-                                            .foregroundColor(.white)
-                                    )
+                                    RoundedRectangle(cornerRadius: 10) // Adjust the corner radius as needed
+                                        .foregroundColor(.white)
+                                )
                                 .foregroundColor(.gray)
                                 .onSubmit {
                                     Task {
@@ -44,10 +44,21 @@ struct SearchView: View {
                                 }
 
                             VStack {
-                                NavigationLink(destination: CartView(cart: vm.cart, cost: vm.totalCost)) {
+                                NavigationLink(destination: CartView(cart: vm.cart, cost: vm.totalCost, count: vm.cartCount)) {
                                     Image(systemName: "cart")
+                                        .font(.title2)
+                                        .overlay(
+                                            Circle()
+                                                .fill(.yellow)
+                                                .frame(width: 22, height: 22, alignment: .topTrailing)
+                                                .overlay(Text("\(vm.cartCount)").font(.caption).foregroundColor(.black))
+                                                .offset(x: 10, y: -10)
+                                                .font(.subheadline),
+
+                                            alignment: .topTrailing
+                                        )
                                 }
-                                .frame(width: 40, height: 20)
+                                .frame(width: 40, height: 44)
                                 Text("$\(vm.totalCost, specifier: "%.2f")")
                                     .font(.subheadline)
                             }
@@ -58,6 +69,7 @@ struct SearchView: View {
                                 .frame(width: 45, height: 20)
                         }
                     }
+//                    .badge(100)
                     .listRowBackground(Color.testColorSet)
                     .listRowInsets(EdgeInsets())
                     .background(Color.testColorSet)
@@ -112,6 +124,7 @@ struct SearchView: View {
                                                 .font(.caption2)
                                             Button(action: {
                                                 vm.addToTotalCost(price: result.price)
+                                                vm.addToCartCount(count: 1)
                                                 vm.appendToCart(product: result)
                                             }) {
                                                 Text("Add to cart")

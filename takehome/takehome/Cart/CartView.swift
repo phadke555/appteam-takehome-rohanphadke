@@ -10,6 +10,7 @@ import SwiftUI
 struct CartView: View {
     let cart: [Product]
     let cost: Double
+    let count: Int
     var body: some View {
         List {
             Section {
@@ -17,9 +18,10 @@ struct CartView: View {
                     .font(.title)
                     .multilineTextAlignment(.center)
                 Text("Total: $\(cost, specifier: "%.2f")")
+                Text("Items: \(count)")
             }
-            
-            if cost > 0.00 {
+
+            if cost > 0.00 || count > 0 {
                 Section {
                     ForEach(cart, id: \.self.id) { result in
                         NavigationLink(destination: DetailView(productID: result.id, productName: result.title, productImage: result.thumbnail, productPrice: result.price, productRating: result.rating, productStock: result.stock, productDescription: result.description)) {
@@ -63,7 +65,7 @@ struct CartView: View {
                     }
                 }
             }
-            else{
+            else {
                 Text("Cart is currently empty. Add to the cart!")
             }
         }
@@ -72,5 +74,5 @@ struct CartView: View {
 }
 
 #Preview {
-    CartView(cart: [Product(id: 5, title: "Prod", description: "Hello World", price: 4.00, discountPercentage: 3.00, rating: 3.57, stock: 52, brand: "Equate", category: "something", thumbnail: "https://hws.dev/paul.jpg", images: ["https://hws.dev/paul.jpg"])], cost: 0)
+    CartView(cart: [Product(id: 5, title: "Prod", description: "Hello World", price: 4.00, discountPercentage: 3.00, rating: 3.57, stock: 52, brand: "Equate", category: "something", thumbnail: "https://hws.dev/paul.jpg", images: ["https://hws.dev/paul.jpg"])], cost: 0, count: 1)
 }
