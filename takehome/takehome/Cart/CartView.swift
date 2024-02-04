@@ -21,7 +21,6 @@ struct CartView: View {
                         .multilineTextAlignment(.center)
                     Text("Total: $\(cost, specifier: "%.2f")")
                     Text("Items: \(count)")
-                    
                 }
                 Spacer()
             }
@@ -29,7 +28,7 @@ struct CartView: View {
         }
         .background(Color.testColorSet)
         .foregroundColor(.white)
-        
+
         List {
             if cost > 0.00 || count > 0 {
                 Section {
@@ -44,8 +43,6 @@ struct CartView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .cornerRadius(8)
                                 VStack(alignment: .leading) {
-                                    //                            AsyncImage(url: URL(string: result.images[0]))
-                                    //                                .frame(width:10, height:5)
                                     HStack {
                                         Text("Now $\(result.price, specifier: "%.2f")")
                                             .multilineTextAlignment(.leading)
@@ -63,8 +60,6 @@ struct CartView: View {
                                     HStack {
                                         StarRatingView(rating: result.rating)
                                             .font(.caption2)
-                                        //                                            Text("3,135")
-                                        //                                                .font(.caption2)
                                     }
                                     Text("")
                                     Text("Free shipping, arrives in 2 days")

@@ -18,7 +18,6 @@ struct DetailView: View {
     @StateObject private var vm = DetailViewModel()
     var body: some View {
         NavigationStack {
-            //        Text("Recipe details for \(recipeID)")
 
             VStack {
                 HStack {
@@ -36,7 +35,11 @@ struct DetailView: View {
             .foregroundColor(.white)
             List {
                 Section {
-                    AsyncImage(url: URL(string: productImage))
+                    AsyncImage(url: URL(string: productImage)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }
                     VStack(alignment: .center) {
                         HStack(alignment: .center) {
                             Spacer()
