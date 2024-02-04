@@ -101,7 +101,7 @@ struct SearchView: View {
                                                 .font(.footnote)
                                                 .foregroundColor(.green)
                                                 .fontWeight(.bold)
-                                            Text("\(result.price / (1 - (result.discountPercentage / 100)), specifier: "%.2f")")
+                                            Text("$\(result.price / (1 - (result.discountPercentage / 100)), specifier: "%.2f")")
                                                 .font(.caption2)
                                                 .strikethrough()
                                         }

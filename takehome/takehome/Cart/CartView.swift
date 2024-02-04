@@ -43,13 +43,15 @@ struct CartView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .cornerRadius(8)
                                 VStack(alignment: .leading) {
+                                    Text("\(result.title)")
+                                        .font(.callout)
                                     HStack {
                                         Text("Now $\(result.price, specifier: "%.2f")")
                                             .multilineTextAlignment(.leading)
                                             .font(.footnote)
                                             .fontWeight(.bold)
                                             .foregroundColor(.green)
-                                        Text("\(result.price / (1 - (result.discountPercentage / 100)), specifier: "%.2f")")
+                                        Text("$\(result.price / (1 - (result.discountPercentage / 100)), specifier: "%.2f")")
                                             .font(.caption2)
                                             .strikethrough()
                                     }
