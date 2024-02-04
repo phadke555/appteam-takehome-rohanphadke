@@ -46,24 +46,27 @@ struct CartView: View {
                                     HStack {
                                         Text("Now $\(result.price, specifier: "%.2f")")
                                             .multilineTextAlignment(.leading)
-                                            .font(.caption)
+                                            .font(.footnote)
+                                            .fontWeight(.bold)
                                             .foregroundColor(.green)
                                         Text("\(result.price / (1 - (result.discountPercentage / 100)), specifier: "%.2f")")
-                                            .font(.footnote)
+                                            .font(.caption2)
                                             .strikethrough()
                                     }
                                     Text("\(result.description)")
                                         .multilineTextAlignment(.leading)
-                                        .font(.caption2)
+                                        .font(.caption)
                                         .lineLimit(2)
                                     Text("")
                                     HStack {
                                         StarRatingView(rating: result.rating)
+                                            .font(.caption)
+                                        Text("3,225")
                                             .font(.caption2)
                                     }
                                     Text("")
                                     Text("Free shipping, arrives in 2 days")
-                                        .font(.caption2)
+                                        .font(.caption)
                                 }
                             }
                         }
@@ -73,6 +76,24 @@ struct CartView: View {
             else {
                 Section {
                     Text("Cart is currently empty. Add to the cart!")
+                }
+            }
+            Section{
+                HStack{
+                    Spacer()
+                    Button(action: {
+                        // Action to perform on button tap
+                        print("Checkout button tapped.")
+                        // Here, you can place your code to proceed to the checkout process
+                    }) {
+                        Text("Checkout")
+                            .font(.headline)
+                            .padding()
+                            .background(Color.testColorSet)
+                            .foregroundColor(.white)
+                            .cornerRadius(10) // Adds rounded corners to the button
+                    }
+                    Spacer()
                 }
             }
         }

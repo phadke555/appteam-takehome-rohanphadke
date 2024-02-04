@@ -21,8 +21,12 @@ struct SearchView: View {
                         .font(.title3)
                         .multilineTextAlignment(.center)
                         .overlay(Image(systemName: "magnifyingglass")
-                            .padding(.trailing, 250)
-                            .foregroundColor(.blue)
+                            .padding(.trailing, 300)
+                            .foregroundColor(.black)
+                        )
+                        .overlay(Image(systemName: "barcode.viewfinder")
+                            .padding(.leading, 300)
+                            .foregroundColor(.black)
                         )
                         .background(
                             RoundedRectangle(cornerRadius: 10)
@@ -38,11 +42,11 @@ struct SearchView: View {
                     VStack {
                         NavigationLink(destination: CartView(cart: vm.cart, cost: vm.totalCost, count: vm.cartCount)) {
                             Image(systemName: "cart")
-                                .font(.title2)
+                                .font(.title3)
                                 .overlay(
                                     Circle()
                                         .fill(.yellow)
-                                        .frame(width: 22, height: 22, alignment: .topTrailing)
+                                        .frame(width: 20, height: 20, alignment: .topTrailing)
                                         .overlay(Text("\(vm.cartCount)").font(.caption).foregroundColor(.black))
                                         .offset(x: 10, y: -10)
                                         .font(.subheadline),
@@ -50,7 +54,6 @@ struct SearchView: View {
                                     alignment: .topTrailing
                                 )
                         }
-                        .frame(width: 40, height: 44)
                         Text("$\(vm.totalCost, specifier: "%.2f")")
                             .font(.subheadline)
                     }

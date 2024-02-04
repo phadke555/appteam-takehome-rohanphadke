@@ -8,24 +8,28 @@
 import Foundation
 
 
-
+struct Cart: Codable {
+    var cost: Double
+    var count: Int
+    var products: [Product]
+}
 
 struct DummyResponse: Codable {
-    let products: [Product]
+    var products: [Product]
 }
 
 
 struct Product: Codable {
-    let id: Int
-    let title: String
-    let description: String
-    let price: Double
-    let discountPercentage: Double
-    let rating: Double
-    let stock: Int
-    let brand: String
-    let category: String
-    let thumbnail: String
-    let images: [String]
+    var id: Int
+    var title: String
+    var description: String
+    var price: Double
+    var discountPercentage: Double
+    var rating: Double
+    var stock: Int
+    var brand: String
+    var category: String
+    var thumbnail: String
+    var images: [String]
 }
 

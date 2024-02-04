@@ -8,17 +8,17 @@
 import Foundation
 
 struct CommentsResponse: Codable {
-    let comments: [Comment]
+    var comments: [Comment]
 }
 
 struct Comment: Codable {
-    let id: Int
-    let body: String
-    let postId: Int
-    let user: User
+    var id: Int
+    var body: String
+    var postId: Int
+    var user: User
 }
 
 struct User: Codable {
-    let id: Int
-    let username: String
+    var id: Int
+    var username: String
 }
