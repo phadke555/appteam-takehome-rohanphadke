@@ -78,7 +78,7 @@ struct SearchView: View {
                     case .success(let results):
                         Text("Results for '\(inputSearch)'")
                             .font(.title)
-
+                        var isFirstItem = true
                         ForEach(results, id: \.self.id) { result in
 
                             NavigationLink(destination: DetailView(productID: result.id, productName: result.title, productImage: result.thumbnail, productPrice: result.price, productRating: result.rating, productStock: result.stock, productDescription: result.description)) {
@@ -94,24 +94,27 @@ struct SearchView: View {
                                         HStack {
                                             Text("Now $\(result.price, specifier: "%.2f")")
                                                 .multilineTextAlignment(.leading)
-                                                .font(.caption)
-                                                .foregroundColor(.green)
-                                            Text("\(result.price / (1 - (result.discountPercentage / 100)), specifier: "%.2f")")
                                                 .font(.footnote)
+                                                .foregroundColor(.green)
+                                                .fontWeight(.bold)
+                                            Text("\(result.price / (1 - (result.discountPercentage / 100)), specifier: "%.2f")")
+                                                .font(.caption2)
                                                 .strikethrough()
                                         }
                                         Text("\(result.description)")
                                             .multilineTextAlignment(.leading)
-                                            .font(.caption2)
+                                            .font(.caption)
                                             .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
                                         Text("")
                                         HStack {
                                             StarRatingView(rating: result.rating)
+                                                .font(.caption)
+                                            Text("3,225")
                                                 .font(.caption2)
                                         }
                                         Text("")
                                         Text("Free shipping, arrives in 2 days")
-                                            .font(.caption2)
+                                            .font(.caption)
                                         Button(action: {
                                             vm.addToTotalCost(price: result.price)
                                             vm.addToCartCount(count: 1)
