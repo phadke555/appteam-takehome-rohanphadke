@@ -10,6 +10,7 @@ import SwiftUI
 struct MyItemView: View {
     var body: some View {
         Text("My Items")
+            .font(.title)
     }
 }
 

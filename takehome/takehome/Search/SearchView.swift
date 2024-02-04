@@ -81,7 +81,6 @@ struct SearchView: View {
                     case .success(let results):
                         Text("Results for '\(inputSearch)'")
                             .font(.title)
-                        var isFirstItem = true
                         ForEach(results, id: \.self.id) { result in
 
                             NavigationLink(destination: DetailView(productID: result.id, productName: result.title, productImage: result.thumbnail, productPrice: result.price, productRating: result.rating, productStock: result.stock, productDescription: result.description)) {
@@ -94,6 +93,8 @@ struct SearchView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .cornerRadius(8)
                                     VStack(alignment: .leading) {
+                                        Text("\(result.title)")
+                                            .font(.callout)
                                         HStack {
                                             Text("Now $\(result.price, specifier: "%.2f")")
                                                 .multilineTextAlignment(.leading)
